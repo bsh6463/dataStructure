@@ -1,7 +1,7 @@
 package arrayList;
 
+import arrayList.MyArray;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +53,7 @@ class MyArrayTest {
     void insertElementWrongPosition() throws IllegalArgumentException {
 
         //given
-        int insertIndex = array.ARRAY_SIZE+10;
+        int insertIndex = array.getARRAY_SIZE()+10;
 
         //when, then
         assertThrows(IllegalArgumentException.class, () -> array.insertElement(insertIndex,5));
@@ -81,7 +81,7 @@ class MyArrayTest {
     void removeElementWrongPosition() throws IllegalArgumentException {
 
         //given
-        int deleteIndex = array.ARRAY_SIZE+10;
+        int deleteIndex = array.getARRAY_SIZE()+10;
 
         //when, then
         assertThrows(IllegalArgumentException.class, ()-> array.removeElement(deleteIndex));
@@ -91,7 +91,7 @@ class MyArrayTest {
 
     @Test
     void noEnoughMemoryTest() throws OutOfMemoryError {
-        for (int i = cnt; i <array.ARRAY_SIZE;i++){
+        for (int i = cnt; i <array.getARRAY_SIZE();i++){
             array.addElement(i);
         }
         assertThrows(OutOfMemoryError.class, ()-> array.addElement(10));

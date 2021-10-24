@@ -5,9 +5,13 @@ public class MyArray {
     int[] intArr;
     int count;
 
-    public int ARRAY_SIZE;
+    private int ARRAY_SIZE;
     public static final int ERROR_NUM = -99999999;
     public static final int OK = 200;
+
+    public int getARRAY_SIZE() {
+        return ARRAY_SIZE;
+    }
 
     public MyArray() {
         count = 0;
@@ -41,6 +45,14 @@ public class MyArray {
         }
         intArr[position] = num;
         count++;
+    }
+
+    public int getElement(int position){
+        if (position < 0 || position > count){
+            throw new IllegalArgumentException("position 에러");
+        }
+
+        return intArr[position];
     }
 
     /**
@@ -108,5 +120,11 @@ public class MyArray {
             this.intArr[i] = 0;
         }
         this.count = 0;
+    }
+
+    public void printAll(){
+        for (int i = 0; i < count; i++){
+            System.out.println("data : " + intArr[i]);
+        }
     }
 }
