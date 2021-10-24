@@ -1,6 +1,7 @@
 package listInterface;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MemberArrayList {
 
@@ -19,25 +20,29 @@ public class MemberArrayList {
     }
 
     public Member getMember(int memberId){
-        for (int i = 0; i < arrayList.size(); i++){
-            Member member = arrayList.get(i);
 
-            int tempId = member.getMemberId();
-            if (tempId  == memberId){
-                return arrayList.get(i);
+        Iterator<Member> iterator = arrayList.iterator();
 
+        while (iterator.hasNext()){
+            Member member = iterator.next();
+
+            if (member.getMemberId() == memberId){
+                return member;
             }
         }
+
         return null;
     }
 
     public boolean removeMember(int memberId){
-        for (int i = 0; i < arrayList.size(); i++){
-            Member member = arrayList.get(i);
 
-            int tempId = member.getMemberId();
-            if (tempId  == memberId){
-                arrayList.remove(i);
+        Iterator<Member> iterator = arrayList.iterator();
+
+        while (iterator.hasNext()){
+            Member member = iterator.next();
+
+            if (member.getMemberId() == memberId){
+                arrayList.remove(member);
                 return true;
             }
         }
