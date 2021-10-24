@@ -7,6 +7,7 @@ public class MyArray {
 
     public int ARRAY_SIZE;
     public static final int ERROR_NUM = -99999999;
+    public static final int OK = 200;
 
     public MyArray() {
         count = 0;
@@ -20,7 +21,7 @@ public class MyArray {
         intArr = new int[size];
     }
 
-    public void addElement(int num){
+    public void addElement(int num) throws IllegalArgumentException {
 
         isMemoryEnough();
         intArr[count++] = num;
@@ -29,7 +30,7 @@ public class MyArray {
     /**
      * 중간에 요소를 추가하면 마지막 요소부터 한칸씩 뒤로 옮겨야함.
      */
-    public void insertElement(int position, int num){
+    public void insertElement(int position, int num) throws IllegalArgumentException {
 
         positionValidation(position);
 
@@ -46,11 +47,11 @@ public class MyArray {
      * 삽입할 위치의 다음 요소부터 한칸 씩 앞으로 옮김.
      * 기존 마지막 위치는 초기화시킴
      */
-    public int removeElement(int position){
+    public int removeElement(int position) throws IllegalArgumentException {
 
         if(isEmpty()){
             System.out.println("array is Empty");
-            return ERROR_NUM;
+            throw new IllegalArgumentException();
         }
 
         positionValidationForRemove(position);
@@ -67,22 +68,28 @@ public class MyArray {
         return ret;
     }
 
-    private void positionValidation(int position) {
+    private int positionValidation(int position) throws IllegalArgumentException {
         if (position > ARRAY_SIZE || position < 0 || position > count) {
             System.out.println("position error");
+            throw new IllegalArgumentException();
         }
+        return OK;
     }
 
-    private void positionValidationForRemove(int position) {
+    private int positionValidationForRemove(int position) throws IllegalArgumentException {
         if (position > ARRAY_SIZE || position < 0 || position >= count) {
             System.out.println("position error");
+            throw new IllegalArgumentException();
         }
+        return OK;
     }
 
-    private void isMemoryEnough() {
+    private int isMemoryEnough() throws OutOfMemoryError {
         if (count >= ARRAY_SIZE) {
             System.out.println("not enough memory");
+            throw new OutOfMemoryError();
         }
+        return OK;
     }
 
     public Boolean isEmpty(){
