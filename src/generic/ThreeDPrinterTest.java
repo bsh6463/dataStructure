@@ -1,5 +1,6 @@
 package generic;
 
+import arrayList.MyArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,9 @@ class ThreeDPrinterTest {
 
         Plastic plastic = new Plastic();
         genericPrinterPlastic = new GenericPrinter<>(plastic);
+
+        //MyArray myArray = new MyArray();
+       // GenericPrinter<MyArray> printer = new GenericPrinter<MyArray>();
     }
     @Test
     void getMaterial() {

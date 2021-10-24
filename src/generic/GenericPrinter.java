@@ -1,6 +1,6 @@
 package generic;
 
-public class GenericPrinter<T> {
+public class GenericPrinter<T extends Material> {
 
     private T material;
 

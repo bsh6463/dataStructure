@@ -1,6 +1,6 @@
 package generic;
 
-public class Plastic {
+public class Plastic extends Material{
 
     public String toString(){
 
