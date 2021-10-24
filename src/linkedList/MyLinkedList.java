@@ -122,6 +122,12 @@ public class MyLinkedList {
         return preNode;
     }
 
+    public boolean isEmpty(){
+        if (head == null){
+            return true;
+        }
+        return false;
+    }
     public void clear(){
         MyListNode preNode = head;
         MyListNode tempNode;
